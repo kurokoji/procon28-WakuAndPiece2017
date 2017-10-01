@@ -1,39 +1,99 @@
 package WAP;
 
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import javax.lang.model.type.IntersectionType;
-import java.awt.*;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
+
 
 public class Problem {
-  private Piece[] pieces;
+  private ArrayList<Piece> pieces, answerPieces;
+  private ArrayList<Piece> hint;
   private Frame frame;
 
-  public Problem() { }
+  public Problem() {
+    pieces = new ArrayList<>();
+    answerPieces = new ArrayList<>();
+    hint = new ArrayList<>();
+    frame = new Frame();
+  }
 
+  // 問題の入力
   public void inputProblem(BufferedReader br) throws IOException {
     int piecesN = Integer.parseInt(br.readLine());
-    pieces = new Piece[piecesN];
+
     for (int i = 0; i < piecesN; ++i) {
-      pieces[i] = new Piece();
-      pieces[i].inputPiece(br);
+      Piece piece = new Piece();
+      piece.inputPiece(br);
+      pieces.add(piece);
     }
     frame = new Frame();
     frame.inputFrame(br);
+    br.close();
   }
 
-  public void showProblem(GraphicsContext gc) {
+  // 問題の出力
+  public void outputProblem(PrintStream ps) throws IOException {
+    ps.println(pieces.size());
+    for (Piece piece : pieces) {
+      piece.outputPiece(ps);
+    }
+    frame.outputFrame(ps);
+    ps.flush();
+    ps.close();
+  }
+
+  // ソルバから受け取った答えの入力
+  public void inputAnswer(BufferedReader br) throws IOException {
+    int answerPiecesN = Integer.parseInt(br.readLine());
+
+    for (int i = 0; i < answerPiecesN; ++i) {
+      Piece piece = new Piece();
+      piece.inputPiece(br);
+      answerPieces.add(piece);
+    }
+    br.close();
+  }
+
+  // ヒントの入力
+  public void inputHint(BufferedReader br) throws IOException {
+    int piecesN = Integer.parseInt(br.readLine());
+    for (int i = 0; i < piecesN; ++i) {
+      Piece piece = new Piece();
+      piece.inputPiece(br);
+      hint.add(piece);
+    }
+    br.close();
+  }
+
+  // ヒントをcanvasに描画
+  public void showHint(GraphicsContext gc) throws IOException {
+    for (Piece piece : hint) {
+      piece.fillPolygon(gc);
+    }
+  }
+
+  // ソルバから受け取った答えをcanvasに描画
+  public void showAnswer(GraphicsContext gc) throws IOException {
+    for (Piece piece : answerPieces) {
+      piece.fillPolygon(gc);
+    }
     frame.showFrame(gc);
   }
 
-  public Piece[] getPieces() {
+  // フレームの描画
+  public void showFrame(GraphicsContext gc) {
+    frame.showFrame(gc);
+  }
+
+  public ArrayList<Piece> getPieces() {
     return pieces;
+  }
+
+  public ArrayList<Piece> getHint() {
+    return hint;
   }
 
   public Frame getFrame() {

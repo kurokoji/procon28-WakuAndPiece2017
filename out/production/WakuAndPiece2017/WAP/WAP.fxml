@@ -3,6 +3,7 @@
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -20,6 +21,12 @@
             <Font size="14.0" />
          </font>
       </Label>
+      <Button fx:id="canvasClearButton" layoutX="55.0" layoutY="679.0" mnemonicParsing="false" onAction="#onCanvasClearClicked" text="キャンバスクリア" textAlignment="CENTER" />
+      <TextArea fx:id="consoleArea" editable="false" layoutX="1057.0" layoutY="287.0" prefHeight="384.0" prefWidth="200.0">
+         <font>
+            <Font name="Consolas" size="13.0" />
+         </font>
+      </TextArea>
          </AnchorPane>
    <columnConstraints>
       <ColumnConstraints />
