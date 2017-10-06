@@ -72,6 +72,7 @@ public class Problem {
   public void showHint(GraphicsContext gc) throws IOException {
     for (Piece piece : hint) {
       piece.fillPolygon(gc);
+      piece.strokePolygon(gc);
     }
   }
 
@@ -79,6 +80,8 @@ public class Problem {
   public void showAnswer(GraphicsContext gc) throws IOException {
     for (Piece piece : answerPieces) {
       piece.fillPolygon(gc);
+      piece.strokePolygon(gc);
+      piece.strokeCircle(gc);
     }
     frame.showFrame(gc);
   }

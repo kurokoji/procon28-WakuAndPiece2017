@@ -1,9 +1,12 @@
 package WAP;
 
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 import java.io.*;
 
 public class Point {
-  private final double MAG = 5.0;
+  private final double MAG = 8.0;
   private double x, y;
   public Point() {}
   public Point(Double _x, Double _y) {
@@ -29,5 +32,11 @@ public class Point {
   // 座標情報の出力
   public void output(PrintStream ps) throws IOException {
     ps.println(x / MAG + " " + y / MAG);
+  }
+
+  public void strokeOval(GraphicsContext gc) {
+    gc.setStroke(Color.AQUA);
+    gc.setLineWidth(1.0);
+    gc.strokeOval(x, y, 10, 10);
   }
 }

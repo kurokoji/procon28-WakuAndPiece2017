@@ -55,7 +55,13 @@ public class Piece {
   // ピースの枠線のみcanvasに描画
   public void strokePolygon(GraphicsContext gc) {
     gc.setStroke(Color.BLACK);
-    gc.setLineWidth(0.5);
+    gc.setLineWidth(1.0);
     gc.strokePolygon(xPoints, yPoints, pointsN);
+  }
+
+  public void strokeCircle(GraphicsContext gc) {
+    for (Point point : points) {
+      point.strokeOval(gc);
+    }
   }
 }

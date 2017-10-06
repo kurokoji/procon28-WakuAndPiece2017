@@ -13,10 +13,10 @@ public class Controller {
   @FXML private Label piecesLabel;
   @FXML private TextArea consoleArea;
   private Problem problem;
-  private final String readQRCurrentPath = "cppReadQR/build/readqr";
-  private final String solverCurrentPath = "kurosolver/build/solver";
-  // private final String readQRAbsolutePath = "/Users/kurokoji/Dropbox/kurokoji/procon28dev/cppReadQR/build/readqr";
-  // private final String solverAbsolutePath = "/Users/kurokoji/Dropbox/kurokoji/procon28dev/kurosolver/build/solver";
+  // private final String readQRCurrentPath = "cppReadQR/build/readqr";
+  // private final String solverCurrentPath = "kurosolver/build/solver";
+  private final String readQRAbsolutePath = "/Users/kurokoji/Dropbox/kurokoji/procon28dev/cppReadQR/build/readqr";
+  private final String solverAbsolutePath = "/Users/kurokoji/Dropbox/kurokoji/procon28dev/kurosolver/build/solver";
 
   public Controller() {
     problem = new Problem();
@@ -30,7 +30,7 @@ public class Controller {
   // problemReadButtonが押されたらイベント発生
   @FXML
   public void onProblemReadClicked() throws IOException, InterruptedException {
-    final String readQRAbsolutePath = new File(readQRCurrentPath).getAbsolutePath();
+    // final String readQRAbsolutePath = new File(readQRCurrentPath).getAbsolutePath();
     ProcessBuilder pb = new ProcessBuilder(readQRAbsolutePath, "0", "0");
     Process process = pb.start();
 
@@ -54,7 +54,7 @@ public class Controller {
   // hintReadButtonが押されたらイベント発生
   @FXML
   public void onHintReadClicked() throws IOException, InterruptedException {
-    final String readQRAbsolutePath = new File(readQRCurrentPath).getAbsolutePath();
+    //final String readQRAbsolutePath = new File(readQRCurrentPath).getAbsolutePath();
     ProcessBuilder pb = new ProcessBuilder(readQRAbsolutePath, "1", "0");
     Process process = pb.start();
 
@@ -78,8 +78,8 @@ public class Controller {
   // solveButtonが押されたらイベント発生
   @FXML
   public void onSolveClicked() throws IOException, InterruptedException {
-    final String solverAbsolutePath = new File(solverCurrentPath).getAbsolutePath();
-    ProcessBuilder pb = new ProcessBuilder(solverAbsolutePath, "50");
+    // final String solverAbsolutePath = new File(solverCurrentPath).getAbsolutePath();
+    ProcessBuilder pb = new ProcessBuilder(solverAbsolutePath, "90");
     Process process = pb.start();
 
     OutputStream os = process.getOutputStream();
