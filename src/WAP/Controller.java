@@ -70,6 +70,7 @@ public class Controller {
     }
 
     problem.inputHint(new BufferedReader(new InputStreamReader(is)));
+    piecesLabel.setText(piecesLabel.getText() + " Put: " + problem.getHint().size());
     problem.showHint(myCanvas.getGraphicsContext2D());
   }
 

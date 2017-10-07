@@ -81,7 +81,6 @@ public class Problem {
     for (Piece piece : answerPieces) {
       piece.fillPolygon(gc);
       piece.strokePolygon(gc);
-      piece.strokeCircle(gc);
     }
     frame.showFrame(gc);
   }
