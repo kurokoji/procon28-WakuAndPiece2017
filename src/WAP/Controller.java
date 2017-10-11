@@ -80,7 +80,7 @@ public class Controller {
   @FXML
   public void onSolveClicked() throws IOException, InterruptedException {
     // final String solverAbsolutePath = new File(solverCurrentPath).getAbsolutePath();
-    ProcessBuilder pb = new ProcessBuilder(solverAbsolutePath, "90");
+    ProcessBuilder pb = new ProcessBuilder(solverAbsolutePath, "40");
     Process process = pb.start();
 
     OutputStream os = process.getOutputStream();
@@ -93,8 +93,9 @@ public class Controller {
     BufferedReader br = new BufferedReader(new InputStreamReader(eis));
 
     for (String s; (s = br.readLine()) != null; ) {
-      String t = consoleArea.getText();
-      consoleArea.setText(t + '\n' + s);
+      System.out.println(s);
+      // String t = consoleArea.getText();
+      // consoleArea.setText(t + '\n' + s);
     }
     process.waitFor();
 
