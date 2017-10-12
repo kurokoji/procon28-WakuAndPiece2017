@@ -7,26 +7,26 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class InputStreamThread extends Thread {
-  private BufferedReader br;
-  private ArrayList<String> list;
+    private BufferedReader br;
+    private ArrayList<String> list;
 
-  public InputStreamThread(InputStream is) {
-    br = new BufferedReader(new InputStreamReader(is));
-    list = new ArrayList<String>();
-  }
-
-  @Override
-  public void run() {
-    try {
-      for (String s; (s = br.readLine()) != null; ) {
-        list.add(s);
-      }
-    } catch (IOException e) {
-      e.printStackTrace();
+    public InputStreamThread(InputStream is) {
+        br = new BufferedReader(new InputStreamReader(is));
+        list = new ArrayList<String>();
     }
-  }
 
-  public ArrayList<String> getList() {
-    return list;
-  }
+    @Override
+    public void run() {
+        try {
+            for (String s; (s = br.readLine()) != null; ) {
+                list.add(s);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<String> getList() {
+        return list;
+    }
 }
