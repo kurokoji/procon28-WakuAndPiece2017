@@ -15,8 +15,8 @@ public class Controller {
   private Problem problem;
   // private final String readQRCurrentPath = "cppReadQR/build/readqr";
   // private final String solverCurrentPath = "kurosolver/build/solver";
-  private final String readQRAbsolutePath = "/Users/kurokoji/Dropbox/kurokoji/procon28dev/cppReadQR/build/readqr";
-  private final String solverAbsolutePath = "/Users/kurokoji/Dropbox/kurokoji/procon28dev/kurosolver/build/solver";
+  private final String readQRAbsolutePath = "/Users/nazuna/GoogleDrive/nazuna/procon28dev/cppReadQR/build/readqr";
+  private final String solverAbsolutePath = "/Users/nazuna/GoogleDrive/nazuna/procon28dev/kurosolver/build/solver";
 
   public Controller() {
     problem = new Problem();
@@ -31,7 +31,7 @@ public class Controller {
   @FXML
   public void onProblemReadClicked() throws IOException, InterruptedException {
     // final String readQRAbsolutePath = new File(readQRCurrentPath).getAbsolutePath();
-    ProcessBuilder pb = new ProcessBuilder(readQRAbsolutePath, "0", "0");
+    ProcessBuilder pb = new ProcessBuilder(readQRAbsolutePath, "0", "1");
     Process process = pb.start();
 
     process.waitFor();
